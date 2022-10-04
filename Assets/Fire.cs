@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
-    public GameObject newShot;
+    public GameObject bullet;
+    public float bulletVelocity = 20f;
 
     void Start()
     {
@@ -15,7 +16,9 @@ public class Fire : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            var newShot = GameObject.Instantiate(bullet, transform.position, transform.rotation);
 
+            newShot.GetComponent<Rigidbody2D>().velocity = transform.up * bulletVelocity;
         }
     }
 }
